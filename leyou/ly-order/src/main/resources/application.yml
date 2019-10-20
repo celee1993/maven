@@ -1,0 +1,35 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: ly-order
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql:///leyou
+  jackson:
+    default-property-inclusion: non_null
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+mybatis:
+  type-aliases-package: com.leyou.order.pojo
+leyou:
+  jwt:
+    pubKeyPath: C:/tmp/rsa/rsa.pub # 公钥地址
+    cookieName: LY_COOKIE  #COOKIE名称
+  worker:
+    workerId: 1
+    dataCenterId: 1
+  pay:
+    appId: wx8397f8696b538317
+    mchId: 1473426802
+    key: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
+    connectTimeoutMs: 5000
+    readTimeoutMs: 10000
+    notifyUrl: http://www.leyou.com:8089/notify/pay #订单微服务的外网地址（端口） 用于微信外接调用
